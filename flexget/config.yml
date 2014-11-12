@@ -1,0 +1,67 @@
+templates:
+  tv:
+
+    private_torrents: no
+
+    series:
+      settings:
+        tv:
+          exact: yes
+          propers: 10 days
+          # You might want to use another quality
+          # the following is for the "standards" releases.
+          quality: h264 hdtv|webrip <720p !360p !368p !480p !576p
+          set:
+            # Path to download to, set your own but this will be messy in here
+            # No problem, we'll clean it later!
+            path: /where/to/download/Series/{{series_name}}
+      tv:
+        - Homeland
+#        - Example...
+
+    transmission:
+      # Fill host, port, username, password, ratio with those you want/need
+      enabled: yes
+      host: localhost
+      port: 9091
+      username: user
+      password: pass
+      ratio: 3
+
+# YOU DON'T NEED TO DO ANYTHING BEYOND THAT POINT.
+tasks:
+  bt-chat.com-tv:
+    priority: 1
+    rss: http://rss.bt-chat.com/?group=3
+    template: tv
+
+  ezrss.it:
+    priority: 2
+    rss: http://ezrss.it/feed/
+    template: tv
+
+  thepiratebay.org-tv:
+    priority: 3
+    rss: http://rss.thepiratebay.org/208
+    template: tv
+    verify_ssl_certificates: no
+
+  kat.ph-tv:
+    priority: 4
+    rss: http://kat.ph/tv/?rss=1
+    template: tv
+
+  extratorrent.com-tv:
+    priority: 5
+    rss: http://extratorrent.com/rss.xml?cid=8
+    template: tv
+
+  torrentz.eu-tv:
+    priority: 6
+    rss: http://torrentz.eu/feed
+    template: tv
+
+  showrss.karmorra.info-tv:
+    priority: 7
+    rss: http://showrss.info/feeds/all.rss
+    template: tv
