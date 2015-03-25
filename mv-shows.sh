@@ -22,6 +22,7 @@ do
         then
             mkdir -p "$dir"
             mv "$all_f".* "$dir"
+            tree "$dir"
         fi
     fi
 done
